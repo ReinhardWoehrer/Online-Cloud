@@ -1,3 +1,20 @@
+<?php /* Test Comment */
+	session_set_cookie_params(0);
+	session_start();
+	
+	//If the HTTPS is not found to be "on"
+	if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") {
+		//Tell the browser to redirect to the HTTPS URL.
+		header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+		//Prevent the rest of the script from executing.
+		exit;
+	}
+
+	//ldap config
+	define("LDAPPATH", "ldap.technikum-wien.at");
+	define("LDAPBASE", "dc=technikum-wien,dc=at");
+?>
+
 <!DOCTYPE html>
 <html>
 
