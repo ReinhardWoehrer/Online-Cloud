@@ -42,7 +42,7 @@
 		</div>
 		
 		<div id="login">
-			<?php include "content/navi.php"; ?>
+			<?php include "content/navbar.php"; ?>
 		</div>
 
 		<div id="news">
