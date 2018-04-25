@@ -2,7 +2,7 @@
 
 if (isset($_GET['section'])) { // Is section variable set?
 	switch ($_GET['section']) { // Load according site into content
-		case "settingd":
+		case "settings":
 			include "content/spezial_content/settings.php";
 			break;
 

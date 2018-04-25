@@ -1,20 +1,3 @@
-<?php /* Test Comment */
-	session_set_cookie_params(0);
-	session_start();
-	
-	//If the HTTPS is not found to be "on"
-	if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") {
-		//Tell the browser to redirect to the HTTPS URL.
-		header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-		//Prevent the rest of the script from executing.
-		exit;
-	}
-
-	//ldap config
-	define("LDAPPATH", "ldap.technikum-wien.at");
-	define("LDAPBASE", "dc=technikum-wien,dc=at");
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +6,8 @@
 
 	<title>Reinis Cloud</title>
 	
-	<!--<link rel="stylesheet" type="text/css" href="index.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	
 	
 	<!--<script src="jquery-3.0.0.js" type="text/javascript"></script>-->
@@ -36,23 +20,28 @@
 		<div id="header">
 			<?php include "content/header.php"; ?>
 		</div>
-
-		<div id="registration">
-			<?php include "content/login.php"; ?>
-		</div>
+		<div class="container">
+		<div class="row">
+			<div id="registration" class="col-md-6 col-sm-12">
+				<?php include "content/login.php"; ?>
+			</div>
+			
+			<div id="login_news" class="col-md-6 col-sm-12">
+				<div id="login">
+					<?php include "content/login.php"; ?>
+				</div>
 		
-		<div id="login">
-			<?php include "content/navbar.php"; ?>
+				<div id="news">
+					<?php include "content/spezial_content/news.php"; ?>
+				</div>
+			</div>
 		</div>
-
-		<div id="news">
-			<?php include "content/spezial_content/news.php"; ?>
 		</div>
-
 		<div id="footer">
 			<?php include "content/footer.php"; ?>
 		</div>
 	</div>
 </body>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </html>
