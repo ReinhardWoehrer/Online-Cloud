@@ -1,20 +1,3 @@
-<?php /* Test Comment */
-	session_set_cookie_params(0);
-	session_start();
-	
-	//If the HTTPS is not found to be "on"
-	if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") {
-		//Tell the browser to redirect to the HTTPS URL.
-		header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-		//Prevent the rest of the script from executing.
-		exit;
-	}
-
-	//ldap config
-	define("LDAPPATH", "ldap.technikum-wien.at");
-	define("LDAPBASE", "dc=technikum-wien,dc=at");
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +6,8 @@
 
 	<title>Reinis Cloud</title>
 	
-	<!--<link rel="stylesheet" type="text/css" href="index.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	
 	
 	<!--<script src="jquery-3.0.0.js" type="text/javascript"></script>-->
@@ -41,7 +25,7 @@
 			<?php include "content/navbar.php"; ?>
 		</div>
 		
-		<div id="content">
+		<div id="content" class="container">
 			<?php include "content/content.php"; ?>
 		</div>
 
@@ -50,5 +34,6 @@
 		</div>
 	</div>
 </body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </html>

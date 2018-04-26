@@ -1,0 +1,56 @@
+#header{
+	background-color:green;
+	height:300px;
+}
+#navbar{
+	background-color:red;
+	height:50px;
+}
+#registration{
+	background-color:lime;
+	height:700px;
+}
+#login_news{
+	background-color:lightblue;
+}
+#login{
+	background-color: yellow;
+	height:400px;
+}
+#news{
+	background-color:brown;
+	height:300px;
+}
+#footer{
+	background-color:black;
+	height:400px;
+}
+#content{
+	background-color:blue;
+	/*height:700px;*/
+}
+#setAlg{
+	background-color:yellow;
+	height:700px;
+}
+#setDet{
+	background-color:lime;
+	height:700px;
+}
+#SearchUpload{
+	background-color:yellow;
+	height:50px;
+	margin:0 -15px;
+}
+#Ordner{
+	background-color: brown;
+	height:650px;
+}
+#Pfad{
+	background-color:lime;
+	height:50px;
+}
+#Dateien{
+	background-color:lightblue;
+	height:600px;
+}
