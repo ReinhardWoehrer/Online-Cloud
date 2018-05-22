@@ -1,0 +1,617 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (WinNT; U) [Netscape]">
+   <title>LBE 2.7: Usage</title>
+</head>
+<body>
+<b><font size=+1>Usage: Table Of Contents (v2.7)</font></b>
+<ul>
+<li>
+<a href="#Introduction">Introduction</a></li>
+
+<li>
+<a href="#Configuration">Configuration</a></li>
+
+<ul>
+<li>
+<a href="#Browser configuration file">Browser configuration file</a></li>
+
+<li>
+<a href="#Attributes configuration file">Attributes configuration file</a></li>
+</ul>
+
+<li>
+<a href="#General functions">General functions</a></li>
+
+<ul>
+<li>
+<a href="#View Attribute">View Attribute</a></li>
+
+<li>
+<a href="#View Entry">View Entry</a></li>
+
+<li>
+<a href="#Refresh">Refresh</a></li>
+
+<li>
+<a href="#Show error log:">Show error log</a></li>
+
+<li>
+<a href="#Search">Search</a></li>
+
+<li>
+<a href="#Find DN">Find DN</a></li>
+</ul>
+
+<li>
+<a href="#Directory Manager functions">Directory Manager functions</a></li>
+
+<ul>
+<li>
+<a href="#Add Attribute">Add Attribute</a></li>
+
+<li>
+<a href="#Delete Attribute">Delete Attribute</a></li>
+
+<li>
+<a href="#Edit Attribute">Edit Attribute</a></li>
+
+<li>
+<a href="#Add Entry">Add Entry</a></li>
+
+<li>
+<a href="#Delete Entry">Delete Entry</a></li>
+
+<li>
+<a href="#Edit Entry">Edit Entry</a></li>
+
+<li>
+<a href="#Rename Entry">Rename Entry</a></li>
+
+<li>
+<a href="#Delete Value">Delete Value</a></li>
+
+<li>
+<a href="#Delete Tree">Delete Tree</a></li>
+
+<li>
+<a href="#Copy Tree">Copy Tree</a></li>
+
+<li>
+<a href="#Rename Tree">Rename Tree</a></li>
+
+<li>
+<a href="#Create Template">Create Template</a></li>
+</ul>
+
+<li>
+<a href="#LDIF Support">LDIF Functions</a></li>
+
+<ul>
+<li>
+<a href="#LDIF Export">Export</a></li>
+
+<li>
+<a href="#LDIF Import">Import</a></li>
+</ul>
+
+<li>
+<a href="#Viewers/Editors">Viewers/Editors</a></li>
+
+<ul>
+<li>
+<a href="#DefaultEditor">DefaultEditor</a></li>
+
+<li>
+<a href="#BinaryEditor">BinaryEditor</a></li>
+
+<li>
+<a href="#ImageEditor">ImageEditor</a></li>
+
+<li>
+<a href="#SoundEditor">SoundEditor</a> (Java 1.2)</li>
+
+<li>
+<a href="#CertificateEditor">CertificateEditor</a> (Java 1.2)</li>
+</ul>
+</ul>
+
+<hr width="90%">
+<p><a NAME="Introduction"></a><b><font size=+1>Introduction</font>:</b>
+<p>The LDAP Browser/Editor allows users to view the items stored in a LDAP
+directory in an hierarchical manner. It also allows modifications of the
+LDAP contents if the user is logged in as the Directory Manager.
+<p>The LDAP objects are displayed in the form of a tree and all attributes
+of the entries in the form of a table.
+<p>The current status of the browser is displayed on the status bar. All
+status messages are displayed in black, warning messages in yellow and
+error messages in red.
+<p>The DN tree is expanded or collapsed by a double click on a node. With
+each selection change on a DN tree, attributes for the selected DN will
+be retrieved and displayed in the attribute table.
+<p>The attribute names and values displayed in the attribute table can
+be sorted in ascending order by clicking on the column names. To sort in
+descending order hold the shift key down while clicking on the column header.
+<p>To display pop-up menus over a tree or table select an entry or an attribute
+and then press the right mouse button.
+<p>The following functions work with multiple selections:
+<ul>&nbsp;
+<li>
+On table:</li>
+
+<ul>&nbsp;
+<li>
+view attribute</li>
+
+<li>
+delete attribute</li>
+
+<li>
+edit attribute</li>
+
+<li>
+delete value</li>
+</ul>
+
+<li>
+On tree:</li>
+
+<ul>&nbsp;
+<li>
+delete entry</li>
+</ul>
+</ul>
+Also, most functions require a DN to be selected on the tree.
+<br>
+<hr width="90%">
+<p><a NAME="Configuration"></a><b><font size=+1>Configuration:</font></b>
+<p><a NAME="Browser configuration file"></a><b>Browser configuration file:</b>
+<p>Holds host related information such as hostname, port, base dn, directory
+manger dn, password, etc.
+<ul>&nbsp;
+<li>
+<b>Default name:</b> browser.config</li>
+
+<li>
+<b>Command line:</b> User can specify different config file using the command
+line switch in the following way: Browser -f config_name</li>
+
+<li>
+<b>File format:</b> option=value</li>
+</ul>
+
+<table BORDER WIDTH="100%" >
+<tr>
+<td ALIGN=CENTER WIDTH="20%"><b>Option</b></td>
+
+<td ALIGN=CENTER WIDTH="30%"><b>Description</b></td>
+
+<td ALIGN=CENTER WIDTH="25%"><b>Allowed values</b></td>
+
+<td ALIGN=CENTER WIDTH="25%"><b>Notes</b></td>
+</tr>
+
+<tr>
+<td WIDTH="20%">host</td>
+
+<td WIDTH="30%">hostname</td>
+
+<td WIDTH="25%">anything</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">port</td>
+
+<td WIDTH="30%">port number</td>
+
+<td WIDTH="25%">number</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">basedn</td>
+
+<td WIDTH="30%">base dn</td>
+
+<td WIDTH="25%">anything</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">mangerdn</td>
+
+<td WIDTH="30%">directory manger dn</td>
+
+<td WIDTH="25%">anything</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">password</td>
+
+<td WIDTH="30%">directory manager password</td>
+
+<td WIDTH="25%">anything</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">version</td>
+
+<td WIDTH="30%">ldap version</td>
+
+<td WIDTH="25%">2 (default), 3</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">autoconnect</td>
+
+<td WIDTH="30%">automatic connection option</td>
+
+<td WIDTH="25%">yes or no (default)</td>
+
+<td WIDTH="25%">if set to yes, host, port, basedn must be specified</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">mangerlogin</td>
+
+<td WIDTH="30%">manger login option</td>
+
+<td WIDTH="25%">yes or no (default)</td>
+
+<td WIDTH="25%">if set to yes, managerdn and password must be specified</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">timeout</td>
+
+<td WIDTH="30%">time limit on a search&nbsp;</td>
+
+<td WIDTH="25%">0..n, 0 or not specified - no limit (default)</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">limit</td>
+
+<td WIDTH="30%">number of results limit</td>
+
+<td WIDTH="25%">0..n, 0 or not specified - no limit (default)</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">libtype</td>
+
+<td WIDTH="30%">ldap sdk to use</td>
+
+<td WIDTH="25%">jndi (default) or netscape&nbsp;</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+
+<tr>
+<td WIDTH="20%">debug</td>
+
+<td WIDTH="30%">debug mode</td>
+
+<td WIDTH="25%">yes or no (default)</td>
+
+<td WIDTH="25%">&nbsp;</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<p><a NAME="Attributes configuration file"></a><b>Attributes configuration
+file:</b>
+<p>Holds attribute properties information such as which attribute type
+and attribute editor to use.
+<ul>&nbsp;
+<li>
+<b>Default name</b>: attributes.config</li>
+
+<li>
+<b>Command line:</b> Cannot specify different file from command line.</li>
+
+<li>
+<b>File format</b>: attribute=type [, editorname arg1 arg2 arg3... ]</li>
+</ul>
+
+<blockquote>where:
+<blockquote>
+<ul>
+<li>
+<b>attribute: </b>attribute name. Must be lowercase.</li>
+
+<li>
+<b>type</b>: attribute type - string or binary.</li>
+
+<li>
+<b>editorname</b>: name of an editor - classname - must be accessible from
+classpath. It is optional. If editor is not specified or it failed to load
+a default editor will be used for the attribute type.</li>
+
+<li>
+<b>arg1...argN</b>: arguments passed to the editor (as a single string)</li>
+</ul>
+</blockquote>
+</blockquote>
+
+<hr width="90%">
+<p><a NAME="General functions"></a><b><font size=+1>General functions</font>:</b>
+<p><a NAME="View Attribute"></a><b>View Attribute:</b>
+<p>Shows all the selected attributes and values of the selected entry in
+a separate window. Each attribute is viewed with the default viewer for
+the value or the viewer specified in the attribute configuration file.
+<p><a NAME="View Entry"></a><b>View Entry:</b>
+<p>Shows all the attributes and values of the selected entry in a separate
+window. Each attribute is viewed with the default viewer for the value
+or the viewer specified in the attribute configuration file.
+<p><a NAME="Refresh"></a><b>Refresh:</b>
+<p>Refreshes the tree under the selected entry. Use this function if the
+tree structure has changed but the changes are not visible.
+<p><a NAME="Show error log:"></a><b>Show error log:</b>
+<p>Displays an error log window with N last errors. Any errors encountered
+during ldap operations will be stored in the log.
+<p><a NAME="Find DN"></a><b>Find DN:</b>
+<p>Finds the DN on the tree. This function only works when the value of
+the selected attribute is a valid DN and can be found on the tree.
+<p><a NAME="Search"></a><b>Search</b>:
+<p>Searches the directory using a filter. A search window will appear.
+Enter the base dn of the search, filter, scope and optionally the attributes
+to return. If no&nbsp;&nbsp; attributes are specified, the dns of&nbsp;
+the returned entries will be displayed. Hit the search button to proceed.
+<p>The results are returned as a table of attributes. The results can be
+sorted by columns (just like the attribute table) by clicking on the column
+header. Sorting treats all values as strings and sometimes numerical data
+might not seem to be sorted correctly. If an attribute contains multiple
+values only one is shown. If the returned entry does not contain the specified
+attribute (the return attribute) 'N/A' will be displayed instead.
+<p>The following operations can be performed on the search results: (at
+least one entry must be selected to display the popup menu)
+<ul>&nbsp;
+<li>
+Find DN</li>
+
+<ul>&nbsp;
+<li>
+finds the dn on the tree and selects it.</li>
+</ul>
+
+<li>
+Set DN</li>
+
+<ul>&nbsp;
+<li>
+takes the selected entry dn and sets it as new search base dn.</li>
+</ul>
+
+<li>
+View Entry</li>
+
+<ul>&nbsp;
+<li>
+views the selected entry</li>
+</ul>
+
+<li>
+Delete Entry</li>
+
+<ul>&nbsp;
+<li>
+deletes the selected entry or entries</li>
+</ul>
+
+<li>
+Edit Entry</li>
+
+<ul>&nbsp;
+<li>
+edits the selected entry</li>
+</ul>
+</ul>
+
+<hr width="90%">
+<p><a NAME="Directory Manager functions"></a><b><font size=+1>Directory
+Manager functions</font></b>:
+<p>All the modifications must follow the LDAP rules, such as:
+<ul>
+<li>
+cannot delete required attributes,</li>
+
+<li>
+cannot add attributes/objects without filling in the required attributes</li>
+
+<li>
+cannot use object classes that are not defined on the server side</li>
+
+<li>
+etc.</li>
+</ul>
+If an error occurs during LDAP modifications the detailed error message
+will be shown when you position the mouse over the status bar on the bottom
+of the browser window.
+<p><a NAME="Delete Attribute"></a><b>Delete Attribute:</b>
+<p>Deletes the selected attribute or attributes of the specified entry.
+The entry must first be selected on the tree. The confirmation box will
+appear. Press YES to proceed with removal.
+<p>This operation will remove the whole attribute with all its values even
+if only a single value is selected. Use the Delete Value function to remove
+just a single value of an attribute.
+<p><a NAME="Delete Value"></a><b>Delete Value:</b>
+<p>Deletes the selected value or values of the specified entry. The values
+can span across multiple attributes. The entry must first be selected on
+the tree. The confirmation box will appear. Press YES to proceed with removal.
+<p><a NAME="Delete Tree"></a><b>Delete Tree:</b>
+<p>Deletes the selected entry and all its children. The confirmation box
+will appear. Press YES to proceed with removal.
+<p><a NAME="Copy Tree"></a><b>Copy Tree</b>:
+<p>Attempts to duplicate a selected tree. <i>Because of the way it is implemented
+it might fail as described in <a href="../faq.html#New features issues">notes.</a></i>
+<p><a NAME="Rename Tree"></a><b>Rename Tree</b>:
+<p>Attempts to rename a selected tree. <i>Because of the way it is implemented
+it might fail as described in <a href="../faq.html#New features issues">notes.</a></i>
+<p><a NAME="Delete Entry"></a><b>Delete Entry:</b>
+<p>Deletes the selected entry or entries on the tree. A confirmation box
+will appear. Press YES to proceed with removal. This will only work if
+the entries have no children. To remove entries with children use the Delete
+Tree function.
+<p><a NAME="Rename Entry"></a><b>Rename Entry:</b>
+<p>Renames the selected entry on the tree. It only changes the name, not
+the base dn or prefix. An input window will appear asking for the new name.
+Enter just the name of the entry without prefix (e.g 'cn=') and suffix
+(e.g. 'ou=Airius.com'). Press RENAME to proceed with the change.
+<p><a NAME="Create Template"></a><b>Create Template:</b>
+<p>Creates a template from the selected entry on the tree. The template
+is later used to add new entries. A window asking for the template name
+will appear.&nbsp; Press SAVE to create the template file and add the template
+name under the Add Entry menu.
+<p>The template file contains a list of the attributes of the object it
+was created from. It is a simple text file and can be easily edited with
+any text editor.
+<p>The template file contains two sections: REQUIRED ATTRIBUTES and OPTIONAL
+ATTRIBUTES. To set the attribute as required or optional move the attribute
+name to the appropriate section. To set the attribute type edit the attribute
+configuration file (see attribute configuration section)
+<p><b>Notes:</b>
+<ul>
+<li>
+When the template is created all attributes are placed in the optional
+section by default.</li>
+
+<li>
+This version of LDAP Browser/Editor does not check for required attributes.</li>
+</ul>
+<a NAME="Edit Entry"></a><b>Edit Entry</b>:
+<p>Allows modification of the currently selected entry. An editor window
+will appear. Each attribute will be edited with either the default editor
+for the&nbsp; attribute's value or the specific editor as specified in
+the attribute configuration file.
+<p>It is possible to add additional values to an attribute or to delete
+them by right clicking on the attribute label. (it will highlight when
+the mouse is over it). It is also possible to add additional attributes
+in the same manner. Press APPLY to update the entry.
+<p><a NAME="Edit Attribute"></a><b>Edit Attribute</b>:
+<p>Allows modification of the currently selected attributes of an entry.
+It works in a similar manner to the Edit Entry function except no new attributes
+can be added.
+<p><a NAME="Add Entry"></a><b>Add Entry</b>:
+<p>Allows addition of new entries to the directory. It uses object templates
+created by the Create Template function. It only works when at least one
+template has been created.
+<p>When the template name is selected, an editor window with all the attributes
+for that entry will be displayed. Fill in the required fields and press
+APPLY to proceed. If the entry is successfully created, it will be shown
+and selected on the tree.
+<p>Values for the attributes can be added or removed by clicking on the
+attribute label.
+<p><a NAME="Add Attribute"></a><b>Add Attribute</b>:
+<p>Allows addition of a single attribute to the selected entry on the tree.
+It is necessary to entry the attribute name, specify the attribute type
+and then fill in values for the attribute.
+<p>First, a window prompting for the attribute name and type will appear.
+Enter the attribute name and select if this attribute should be treated
+as a string or as a binary. Press OK to continue. Next, an editor window
+will appear with the attribute name and a single value. To add or remove
+additional values right click on the attribute label. Press APPLY to add.
+<p>If the attribute type is set to binary, it will automatically be added
+to the attributes configuration file.
+<p>Also, if the attribute was previously set in the attributes configuration
+file to be of a different type or to use a different editor, the current
+settings will be ignored and previous ones used.
+<p><b>Note: </b>If the attribute already exists in the entry it will overwrite
+the current values.
+<br>
+<hr width="90%">
+<p><a NAME="LDIF Support"></a><b><font size=+2>LDIF Functions</font></b>
+<p>The Browser supports a simplified version of the LDIF file format. For
+example, it does not support 'changetypes'. All binary attributes will
+be Base64 encoded.
+<p><a NAME="LDIF Export"></a><b>Export</b>:
+<p>This function saves the selected entry or entries into a LDIF file.
+Depending on the option chosen only the selected entry will be saved, or
+the entries below this entry (one level scope) or the entire tree below
+this entry (sub tree scope).
+<p><a NAME="LDIF Import"></a><b>Import</b>:
+<p>This function reads entries from a LDIF file and updates or inserts
+them into the ldap directory. When inserting and the imported entries already
+exist in the directory, an appropriate error message will be produced and
+the entries will be skipped.
+<br>
+<hr width="90%">
+<p><a NAME="Viewers/Editors"></a><b><font size=+2>Viewers/Editors</font></b>
+<p>Viewers/Editors are used to view and/or edit contents of attributes.
+They either work with string or binary data. Currently the browser contains
+the following viewers/editors:
+<p>Built-in:
+<ul>&nbsp;
+<li>
+<a href="#DefaultEditor">DefaultEditor</a> - for editing any string values</li>
+
+<li>
+<a href="#BinaryEditor">BinaryEditor</a> - for editing any binary values</li>
+
+<li>
+<a href="#ImageEditor">ImageEditor</a> - for displaying JPEG and GIF images.</li>
+</ul>
+Extensions:
+<ul>&nbsp;
+<li>
+<a href="#SoundEditor">SoundEditor</a> - for playing sounds</li>
+
+<li>
+<a href="#CertificateEditor">CertificateEditor</a> - for displaying X.509
+certificates</li>
+</ul>
+<a NAME="DefaultEditor"></a><b>DefaultEditor</b>
+<p>DefaultEditor is basically a textbox used to edit string values. It
+is the default editor for any string values.
+<p><a NAME="BinaryEditor"></a><b>BinaryEditor</b>
+<p>BinaryEditor is a panel that displays the size of the value of an attribute
+and contains a 'save as' button. It also contains an 'insert from' button
+when editing the attribute. The 'save as' button saves the current value
+in a specified file and the 'insert from' button loads the new value from
+a given file. This editor is the default editor for any binary values.
+<p><a NAME="ImageEditor"></a><b>ImageEditor</b>
+<p>ImageEditor displays JPEG or GIF files. It is an extension of the BinaryEditor
+and depending on the settings it adds an additional button to the panel
+or displays the image in the panel. By default, the editor adds a 'view'
+button that displays the image in a separate window when pressed. If the
+'-autoview' argument is specified, the editor will display the image in
+the panel automatically. Also, it is possible to resize or scale the image.
+The switch '-s &lt;value in %>' will scale the image by the specified percentage.
+The set of switches '-w &lt;width> -h &lt;height>' will resize the image
+to the specified width and height. Resizing or scaling is a computational
+intensive process.
+<p>ImageEditor arguments syntax:
+<p>ImageEditor [-autoview] [ [-s &lt;value>] or [-h &lt;height> -w &lt;width>
+] ]
+<p><a NAME="SoundEditor"></a><b>SoundEditor</b>
+<p>SoundEditor plays sound files such as WAV, AU, AIFF, RMF and MIDI TYPE
+0 and 1. It works only with Java 1.2. SoundEditor is an extension of the
+BinaryEditor. It adds an additional 'play' button to the panel.
+<p><a NAME="CertificateEditor"></a><b>CertificateEditor</b>
+<p>CertificateEditor displays the X.509 certificate information. It is
+also an extension of the BinaryEditor and requires Java 1.2. It adds a
+'view' button that displays the certificate info in a separate window.
+By default, the editor displays the significant parts of the certificate
+such as the certificate version, issuer DN, subject DN, validation days,
+key, and algorithm. To display all the info in raw form specify the '-raw'
+argument.
+<p>CertificateEditor arguments syntax:
+<p>CertificateEditor [-raw]
+</body>
+</html>

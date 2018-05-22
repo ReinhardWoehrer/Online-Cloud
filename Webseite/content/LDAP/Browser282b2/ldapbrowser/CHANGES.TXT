@@ -1,0 +1,252 @@
+Version 2.8.2 beta II
+=====================
+
+ - Enhancement: Partial internationalization of the code. Right now
+                only hand full of components have been internationalized.
+                Also, only (bad) Polish translation is provided.
+ - Update: Urls passed during copy-and-paste, and DnD operations are now 
+           UTF8 encoded.
+ - Enhancement: Messages in the error log window can be easily copied to the 
+                system clipboard.
+ - Update: CA certificates and user certificates can now be loaded from 
+           pkcs12 files also. Also the location and the password of the 
+           ca certificates file can be modified from the lbe.properties file.
+	   The location of the CA certificate file can also be specified as 
+           an url.
+ - Update: New configuration file stored in the .lbe/ directory under the 
+           user's home directory. See details in FAQs.
+ - Update: Session names can now be easily changed/edited in the session window
+ - Bug fix: All \ were ignored from cfg files. Now they can be escaped with \
+ - Update: Table sorting option can be now specified in the configuration file.
+ - Update: Minor updates to the referral window. Only one click is now required
+	   to connect anonymously to the server.
+ - Enhancement: The status bar now displays what sort of binding was performed:
+                user, anonymous, or other (external).
+ - Enhancement: If binding as a user and the password is not specified the
+                browser will now prompt the user for the password when
+	        connecting. So the password does not have to be stored in a 
+	        file.
+ - Enhancement: Multiple ldap session windows - MDI application.
+ - Update: Session list is now sortable. (and sorted by default)
+ - Update: Renamed the browser.jar to lbe.jar
+ - Update: Updated the 'lbe' scripts to use default java env.
+ - Update and bug fix. LDIF importer can import base64 encoded dns and handles
+                       :< LDIF directive. Also, LDIF Exported is able to 
+		       export internationalized dns and attributes.
+ - Enhancement: The applet now has an option of running inside of the browser
+                or outside of the browser in a separate window. See the
+	        'window' parameter in the doc.
+
+Version 2.8.1
+=============
+
+ - Enhancement: Read thread was re-implemented to take read requests so a new
+                thread does not need to be started each time a read command
+	        is issued.
+ - Enhancement: Seamless integration with SSL. No extra configuration is 
+                required to connect over SSL.
+ - Enhancement: Better debugging system: multiple levels and types of debugging
+                information.
+ - Bug fix: Updated the code to compile under JVM 1.3
+ - Bug fix: The system clipboard was not accessible if ran as an application.
+ - Bug fix: LDIF export incorrectly formatted string values and new line
+            characters. 
+ - Bug fix: Move operation would delete source entry even when the operation
+            failed.
+ - Bug fix: A template with the same attribute defined (in different cases)
+            would break the browser while creating a new entry.
+ - Update: Copy-and-paste will now work in unsigned applet but it will
+           not use the system clipboard to transfer the data.
+ - Update: Minor UI updates to various dialog boxes to be more consistent.
+ - Enhancement: Append base DN to the User DN check box was added in the 
+                connect window.
+ - Enhancement: Pasting onto attributes from selected (copied) entry is now
+                allowed. It DN or the URL of the source entry will be
+	        added to the selected attribute. Useful e.g. for adding 
+	        users to groups or creating referrals.
+ - Update: Drag and drop interface. The type of operation defaults to the 
+           system depended operation. For example, on Windows and Linux the
+	   default operation is move (just when an object is dragged)
+	   Also, the attribute table can now be drag onto. It will cause
+	   an attribute to be updated with the dn or url of the source node.
+ - Enhancement: added a new config option for specifying the ssl port number:
+               (sslport)
+ - Enhancement [experimental]: added config option for setting the 
+                               sasl client mechanisms packages:
+                               (javax.security.sasl.client.pkgs)
+ - Enhancement [experimental]: added config option for setting the ldap
+                               jndi provider: (jndi.provider)
+
+Version 2.8 final
+=================
+
+ - BUG: Applet does not close socket when switching to another page. FIXED
+ - BUG: DN list in Connect Window was sometimes set incorrectly. FIXED
+ - BUG: Add New Entry: the case of adding a new attribute that was already 
+	defined in the editing entry was not handled correctly. FIXED
+ - Added keyboard accelerators to most used functions
+ - Added an options to turn on/off display of operational attributes
+ - Editing options: ability to enable/disable updating of only non-empty 
+   attributes. Empty attributes can be ignored and not updated in the server. 
+ - Added an ability to dynamically reconnect to a server
+ - Fixed bugs related to running the browser as an unsigned applet.
+ - Fixed a couple of bugs in ImageEditor
+ - Added a new Up button in toolbar
+
+
+Version 2.8 beta II
+===================
+
+ - fixed mouse button problem on macs
+ - re-implemented the delete tree and transfer tree functions
+ - implemented a better CertificateViewer
+ - added the ability to set the operational attributes displayed in the
+   table and ability to set the list filter used to build the tree structure
+ - added 'export to LDIF' button in the search window
+ - re-implemented the copy/paste interface to more closely follow the behavior
+   of the Windows Explorer. 
+ - added a new connect window with session list
+
+
+Version 2.8 beta I
+==================
+
+ - Drag and Drop support
+   o Nodes on the directory tree can be dragged to another location, within
+     the browser or another instance of the browser.
+   o Only works in Windows. Linux and Solaris are  not supported due to bugs
+     in Java (except specific versions)
+   
+ - Copy and paste of dn trees and attributes
+   o Tree nodes and/or attributes and their values can be copied into the
+     clipboard and pasted into another instance of the browser. 
+     Note: Trees cannot be 'cut' in-between two instances of the browser,
+     only copied. Cut on trees is supported within a single instance of the 
+     browser.
+  
+ - Added referral support to all ldap functions
+   o Binding anonymously or with user credentials is supported. 
+     Referrals will be ignored when removing or moving trees. 
+     *** Not every function handles referrals correctly ***
+  
+ - Added password viewer
+   o Displays passwords as strings
+   o Can verify and generate SHA, MD5 and Unix crypt passwords
+
+ - Edit mode updates
+   o Double-click on attribute brings up edit window instead of view window
+   o Deleting entries or attributes by pressing DELETE key on tree or table.
+ 
+ - Search window, LDIF Import/Export improvements, Tree move/copy/rename
+   o Executed as separate threads, can be canceled by pressing CANCEL
+     button or by hitting ESCAPE key.
+ 
+ - Preliminary applet support
+   o The browser can be run as an applet, configuration and other files can be
+     loaded from URLs. 
+ 
+ - SSL support
+   o The browser now supports secure ldap connections over the SSL protocol.
+     Please read the SSL.txt document for more information.
+
+ - Misc. updates
+   o More configuration options such as security options, referral options,
+     and alias options, etc. Some of them can also be set from the options
+     panel in the connect window.
+   o Ability to set custom leaf indicator attribute and its type. 
+    e.g. numSubordinates in Netscape LDAP Server
+   o Trees can be sorted quickly and automatically.
+   o Attribute table was updated for faster updates.
+   o Added toolbar with most frequent operations
+   o Preliminary support for internalization and customization of the browser:
+     (colors, menus, menu labels, look and feel can be customized through a 
+     properties file)
+  
+THINGS ADDED BUT NOT TESTED:
+  
+1. Aliasing
+   o Different options for dereferencing aliases were not tested.
+  
+LIMITATIONS:
+
+1. Referrals hops
+   o The browser does not keep track of referral hops at this point.
+     Circular referrals might hang the browser.
+ 
+BUGS:
+ 
+1. In JDK 1.3, the attribute table background might not be painted
+   correctly due to a Java bug.
+2. Drag and drop might cause the browser to hang in some cases.
+3. The browser does not correctly handle entries with multiple referral
+   URLs.
+
+
+------------------------------------------------------------------------
+
+Version 2.7 
+===========
+
+ - Config file saving & loading 
+ - Bug fixes 
+ - GUI enhancements 
+
+
+Version 2.6 
+===========
+
+ - LDIF import & export 
+ - Tree copy/rename 
+ - Tree sorting 
+ - Automatic DN context retrieval (v3 servers only) 
+ - Usage of operational attributes (whenever possible) 
+ - Error logging 
+ - Editor caching 
+ - Various optimizations and GUI updates 
+   (popup menus, faster sorting algorithms) 
+ - Minor bugs fixed 
+
+
+Version 2.5  
+===========
+
+ - Searching 
+ - Tree refreshing 
+ - Tree and single value deletion 
+ - Binary value support. Ability to save and read values from files. 
+ - Multiple selections on the table and tree. 
+ - GUI changes: 
+    o attribute list replaced by table. 
+    o popup menus (table, tree, attributes) 
+ - Sorting: 
+    o in attribute table 
+    o in search results 
+ - Online help 
+ - Command line arguments: 
+    o use different configuration file 
+    o classpath checking, etc. (does not work anymore)
+ - Configuration file updates: 
+    o ability to specify timeouts, maximum number of entries, ldap version,
+      ldap libraries (netscape or jndi) and enabling debug mode 
+ - Attributes configuration file: 
+    o specify the attribute type (string or binary) 
+    o specify the attribute viewer/editor (can be customized) 
+ - Custom attribute viewers/editors 
+    o write your own 
+    o use included: 
+      - image (for gif and jpeg) 
+      - audio (Java 1.2 only) 
+      - certificate (Java 1.2 only) 
+
+
+Version 2.0
+===========
+
+ - Custom configuration  
+ - Automatic connection to specified host  
+ - Netscape LDAP SDK support (through JNDI service provider)
+ - Full editing capabilities including entry and attribute addition, 
+   modification, and deletion  
+ - Ability to create and modify object templates which are used later for
+   adding new objects. (currently does not rely on schema information)  
+ - Detailed errors messages when possible using Tool Tips 

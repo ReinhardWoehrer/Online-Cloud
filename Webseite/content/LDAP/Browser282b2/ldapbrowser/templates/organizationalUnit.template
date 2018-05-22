@@ -1,0 +1,34 @@
+# name : organizationalUnit
+#
+# objectClass : top
+# objectClass : organizationalUnit
+#
+
+PREFIX: ou
+
+REQUIRED ATTRIBUTES
+
+OPTIONAL ATTRIBUTES
+businessCategory
+description
+destinationIndicator
+facsimileTelephoneNumber
+internationaliSDNNumber
+l
+physicalDeliveryOfficeName
+postOfficeBox
+postalAddress
+postalCode
+preferredDeliveryMethod
+registeredAddress
+searchGuide
+seeAlso
+st
+streetAddress
+telephoneNumber
+teletexTerminalIdentifier
+telexNumber
+userPassword
+x121Address
+
+

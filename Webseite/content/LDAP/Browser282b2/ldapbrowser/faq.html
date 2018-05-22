@@ -1,0 +1,733 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (WinNT; U) [Netscape]">
+   <title>LDAP Browser/Editor FAQ</title>
+</head>
+<body>
+
+<h3>
+Frequently Asked Questions<br>
+LDAP Browser/Editor</h3>
+<b><font size=+1>Question Index</font></b>
+<p><b>General Questions</b>
+<ol>
+<li>
+<a href="#What is the lbe.properties">What is the lbe.properties file?</a></li>
+
+<li>
+<a href="#What properties can be specified in the">What properties can
+be specified in the lbe.properties file?</a></li>
+
+<li>
+<a href="#I'm getting a NoClassFound error trying to run">I'm getting a
+"NoClassFound" error trying to run the Browser. What's wrong?</a></li>
+
+<li>
+<a href="#How do I enable debugging for the LDAP">How do I enable debugging
+for the Browser?</a></li>
+
+<li>
+<a href="#How do I run the Browser behind a">How do I run the Browser behind
+a proxy?</a></li>
+
+<li>
+<a href="#How do I modify the 'lbe' scripts to add the">How do I modify
+the 'be' scripts to add the different system properties?</a></li>
+
+<li>
+<a href="#How do I modify the 'lbe' scripts to specify a">How do I run
+the Browser with a different Java environment?</a></li>
+
+<li>
+<a href="#What parameters can I pass to the Browser">What parameters can
+I pass to the application?</a></li>
+</ol>
+<b>Applet Questions</b>
+<ol>
+<li>
+<a href="#How do I run the Browser as an">How do I run the Browser as an
+applet?</a></li>
+
+<li>
+<a href="#What parameters can I pass to the">What parameters can I pass
+to the applet?</a></li>
+
+<li>
+<a href="#How do I debug the Browser as an">How do I debug the Browser
+as an applet?</a></li>
+</ol>
+<b>SSL Questions</b>
+<ol>
+<li>
+<a href="#How do I enable the SSL support in the">How do I enable the SSL
+support in the Browser?</a></li>
+
+<li>
+<a href="#Why does initial SSL connection take a while to">Why does initial
+SSL connection take a while to establish?</a></li>
+
+<li>
+<a href="#How do I turn on debugging for the SSL">How do I turn on debugging
+for the SSL connection?</a></li>
+
+<li>
+<a href="#How do I specify client certificates for the SSL">How do I specify
+client certificates for the SSL connection?</a></li>
+
+<li>
+<a href="#How do I fix 'CA certificate not found' error?">How do I fix
+the 'CA certificate not found' error?</a></li>
+
+<li>
+<a href="#Why does SSL connection sometimes hang the">Why does SSL connection
+sometimes hang the browser?</a></li>
+</ol>
+<b>Attribute Viewers/Editors Questions</b>
+<ol>
+<li>
+<a href="#What are attribute">What are attribute viewers/editors?</a></li>
+
+<li>
+<a href="#What attribute viewers/editors are distributed">What attribute
+viewers/editors are distributed with the Browser?</a></li>
+
+<li>
+<a href="#How do I set default algorithm for the">How do I set default
+algorithm for the Password Editor?</a></li>
+
+<li>
+<a href="#What is the ExtBinaryEditor and how can I use">What is the ExtBinaryEditor
+and how can I use it?</a></li>
+
+<li>
+<a href="#What is the ExtStringViewer and how can I use">What is the ExtStringViewer
+and how can I use it?</a></li>
+
+<li>
+<a href="#How can I configure the CertificateEditor2 to">How can I configure
+the CertificateEditor2 to launch an external application to view the certificate?</a></li>
+
+<li>
+<a href="#How do I write a custom attribute">How do I write a custom attribute
+viewer/editor?</a></li>
+</ol>
+
+<hr ALIGN=LEFT WIDTH="100%">
+<br><b><font size=+1>General Questions</font></b>
+<p><a NAME="What is the lbe.properties"></a><b>What is the lbe.properties
+file?</b>
+<p>The<i> lbe.properties</i> file is a small configuration file that contains
+generic configuration information applicable to the Browser and any ldap
+session. For example, it specifies the location of the CA certificates
+store and its password, the location of the ldap session files, etc. The
+Browser during initialization will try to load this file from the '<i>.be</i>'
+directory under user's home directory. Examples:
+<p><b>on Unix/Linux</b>:
+<pre>~gawor/.lbe/lbe.properties</pre>
+<b>on Windows NT</b>:
+<pre>c:\winnt\profiles\gawor\.lbe\lbe.properties</pre>
+If the file does not exist or cannot be read, the defaults will be assumed.
+<p>The settings defined in <i>lbe.properties</i> file are meant to replace
+some of the settings previously defined in the <i>.cf.</i> files that were
+considered static and did not change throughout the different ldap sessions.
+Previously, the Browser obtained these properties by&nbsp; loading the
+<i>browser.cfg</i>
+file automatically. Currently, the Browser, will only load the <i>browser.cfg</i>
+file when the <i>lbe.properties</i> file does not exist in the user's home
+directory (for backwards compatibility) If the
+<i>lbe.properties</i> file
+does exist in the user's home directory, the Browser will not load the
+<i>browser.cfg</i> file.
+<p><a NAME="What properties can be specified in the"></a><b>What properties
+can be specified in the lbe.properties file?</b>
+<ul>
+<li>
+<b>cacert.file</b></li>
+
+<ul>
+<li>
+specifies the location of the CA certificates store file. The location
+can be specified as an URL. If the file contains .p12 extension it will
+be interpreted as PKCS12 encoded file.</li>
+</ul>
+
+<li>
+<b>cacert.pwd</b></li>
+
+<ul>
+<li>
+specifies the password for the CA certificates store.</li>
+</ul>
+
+<li>
+<b>session.dir</b></li>
+
+<ul>
+<li>
+Specifies the local directory where the session files will be loaded from.</li>
+</ul>
+
+<li>
+<b>base</b></li>
+
+<ul>
+<li>
+It sets the base location of the Browser where the templates, the help
+files, and the session files will be resolved from. The location can be
+specified as either directory or URL.</li>
+</ul>
+
+<li>
+<b>autoloader</b></li>
+
+<ul>
+<li>
+specifies the name of the session file to automatically load when the Browser
+is started. The session file must have the '<i>auto connect</i>' property
+set to '<i>yes</i>' if the Browser should automatically connect to that
+server. The location of the session is resolved from the base location.</li>
+</ul>
+</ul>
+<a NAME="I'm getting a NoClassFound error trying to run"></a><b>I'm getting
+a "NoClassFound" error trying to run the Browser. What's wrong?</b>
+<p>This error occurs when the Browser is installed incorrectly or launched
+from an invalid directory. The LDAP Browser/Editor must be executed from
+the directory that it was installed in. The Browser must be able to locate
+appropriate libraries required for its operation. The libraries must be
+accessible and located in the <i>lib</i> directory of the Browser's installation
+directory.
+<p><a NAME="How do I enable debugging for the LDAP"></a><b>How do I enable
+debugging for the LDAP Browser/Editor?</b>
+<p>LDAP Browser/Editor provides dynamic debug tracing support. It is enabled
+by setting the <b>lbe.debug</b> system property. The value can be one or
+more of the following:
+<ul>
+<li>
+<b>editor</b></li>
+
+<ul>
+<li>
+print attribute viewers/editors debug messages</li>
+</ul>
+
+<li>
+<b>ldap</b></li>
+
+<ul>
+<li>
+enable LDAP protocol message tracing</li>
+</ul>
+
+<li>
+<b>level1</b></li>
+
+<ul>
+<li>
+print generic browser debug messages</li>
+</ul>
+
+<li>
+<b>level2</b></li>
+
+<ul>
+<li>
+print more and more detailed debug messages</li>
+</ul>
+
+<li>
+<b>ssl</b></li>
+
+<ul>
+<li>
+enable debugging for the built-in secure socket factory</li>
+</ul>
+
+<li>
+<b>all</b></li>
+
+<ul>
+<li>
+enable all debugging</li>
+</ul>
+</ul>
+Example: (using the command-line option on the java command)
+<pre>java -Dlbe.debug=ldap:editor -classpath ... lbe.ui.BrowserApp</pre>
+This will enable ldap tracing and debugging of the attribute viewers/editors.
+<p>For details on how to modify the 'be' scripts to enable this property
+see the <a href="#How do I modify the 'lbe' scripts to add the">question</a>
+about this.
+<p><a NAME="How do I run the Browser behind a"></a><b>How do I run the
+Browser behind a proxy?</b>
+<p>The LDAP Browser/Editor does not provide any special support for proxies.
+However, Java itself provides SOCKS 4 support.
+<br>To configure the Browser to use the proxy server add the following
+properties to the command line to the Java interpreter:
+<pre>-DsocksProxyPort=1080 -DsocksProxyHost=socks.mydomain.com</pre>
+For example:
+<pre>java -DsocksProxyPort=1080 -DsocksProxyHost=socks.mydomain.com -classpath .....&nbsp; lbe.ui.BrowserApp</pre>
+For details on how to modify the 'be' scripts to enable this property see
+the following <a href="#How do I modify the 'lbe' scripts to add the">question</a>.
+<p><a NAME="How do I modify the 'lbe' scripts to add the"></a><b>How do
+I modify the 'be' scripts to add the different system properties?</b>
+<p>On Windows:
+<ol>
+<li>
+Edit the<i> lbe.bat</i> file</li>
+
+<li>
+For version <b>2.8.2 </b>and greater modify the following line:</li>
+
+<pre>set OPTIONS=</pre>
+with the system properties, for example:
+<pre>set OPTIONS=-Dlbe.debug=ldap -DsocksProxyHost=myserver.com</pre>
+For version <b>2.8.1</b> modify the following line:</ol>
+
+<ol>
+<pre>set CMD="%JAVA_HOME%\bin\java" -cp %COMMON%;%EXEC%</pre>
+with the system properties, for example:
+<pre>set CMD="%JAVA_HOME%\bin\java" -Dlbe.debug=ldap -DsocksProxyHost=myserver.com -cp %COMMON%;%EXEC%</pre>
+</ol>
+On Unix:
+<ol>
+<li>
+Edit the <i>lbe.sh</i> file</li>
+
+<li>
+For version <b>2.8.2</b> and greater modify the following line:</li>
+
+<pre>OPTIONS=</pre>
+with the system properties, for example:
+<pre>OPTIONS="-Dlbe.debug=ldap -DsocksProxyHost=myserver.com"</pre>
+For version 2.8.1 modify the following line:
+<pre>CMD="${JAVA_HOME}/bin/java -cp ${COMMON}:${EXEC}"</pre>
+with the system properties, for example:
+<pre>CMD="${JAVA_HOME}/bin/java -Dlbe.debug=ldap -DsocksProxyHost=myserver.com -cp ${COMMON}:${EXEC}"</pre>
+</ol>
+<a NAME="How do I modify the 'lbe' scripts to specify a"></a><b>How do
+I run the Browser with a different Java environment?</b>
+<p>By default the Browser will first try use the Java interpreter specified
+by the <b>JAVA_HOME</b> environment variable. If the environment variable
+is not set, the Browser will then try to use the Java interpreter specified
+in your path. You can run the browser with a different Java environment
+by setting the <b>JAVA_HOME</b> environment variable from the command line
+before starting the Browser. For example, to set the <b>JAVA_HOME</b> variable
+do the following:
+<blockquote>On Windows:</blockquote>
+
+<ol>
+<ol>
+<pre>C:\ldapbrowser>set JAVA_HOME=c:\jdk1.3</pre>
+</ol>
+On Unix/Linux: (using tcsh)
+<ol>
+<pre>pitcairn: ~/ldapbrowser>setenv JAVA_HOME /sandbox/jdk1.3</pre>
+</ol>
+</ol>
+Optionally, you can modify the appropriate '<b>be</b>' script for your
+platform to set the <b>JAVA_HOME</b> variable. For example:
+<blockquote>On Windows:</blockquote>
+
+<ol>
+<ol>
+<li>
+Edit the <i>lbe.bat</i> file and modify (or add at the beginning) the following
+line:</li>
+
+<pre>set JAVA_HOME=c:\jdk1.3</pre>
+</ol>
+On Unix/Linux:
+<br>&nbsp;
+<ol>
+<li>
+Edit the <i>lbe.sh</i> file and modify (or add at the beginning) the following
+line:</li>
+
+<pre>JAVA_HOME=/sandbox/jdk1.3</pre>
+</ol>
+</ol>
+<a NAME="What parameters can I pass to the Browser"></a><b>What parameters
+can I pass to the Browser application?</b>
+<p>There are two parameters that can be passes to the Browser application
+from the command line.
+<ul>
+<li>
+<b>base</b></li>
+
+<ul>
+<li>
+It sets the base location of the Browser where the templates, the help
+files, and the session files will be resolved from. The location can be
+specified as either directory or URL. By default, the application looks
+for these files in the current directory. <i>(example: -base c:\ldapbrowser)</i></li>
+</ul>
+
+<li>
+<b>config</b></li>
+
+<ul>
+<li>
+<b><i>2.8.2: </i></b>Specifies the path of the LBE configuration file (<i>lbe.properties</i>)
+to load. By default, the Browser will try to load the configuration file
+from the '<i>.be</i>' directory under user's home directory. See <a href="#What is the lbe.properties">What
+is lbe.properties file?</a> question for details.</li>
+
+<li>
+<b><i>2.8.1:</i></b> Specifies the name of the configuration file to load.
+It is resolved from the <b>base</b> location. If not set, the application
+will try to load the default configuration file called <i>browser.cfg</i>.
+<i>(example:
+-config nds.cfg)</i></li>
+</ul>
+</ul>
+
+<hr ALIGN=LEFT WIDTH="100%">
+<br><b><font size=+1>Applet Questions</font></b>
+<p><a NAME="How do I run the Browser as an"></a><b>How do I run the Browser
+as an applet?</b>
+<p>The LDAP Browser/Editor can be run as an applet within a web browser
+(Netscape Navigator or Microsoft Internet Explorer) using the <a href="http://java.sun.com/products/plugin/">Java
+Plug-in</a>. The Browser can be run either as a signed or unsigned applet.
+If the Browser is running as an unsigned applet it can only access the
+ldap servers on the server that the applet was downloaded from. If the
+Browser is running as a trusted signed applet it can access any ldap server
+on the network or the internet.
+<br>The HTML page that will contain the applet needs to be modified to
+use the Java Plug-in. A sample HTML page is included with binary distribution
+of the Browser in the <i>applet</i> directory. Please see the <a href="http://java.sun.com/products/plugin/1.3/docs/index.docs.html">Java
+Plug-in documentation</a> for the modification details.
+<p>To run the Browser as an unsigned applet just extract the binary distribution
+into some web directory <i>(e.g. ~/public_html/ldapbrowser/)</i> and copy
+the <i>applet/applet.html</i> file into the browser root directory (<i>e.g.
+~/public_html/ldapbrowser/). </i>Make sure to set the right permissions
+to all the files and directories, and then point your browser to the <i>applet.html</i>
+file.
+<p>To run the Browser as a signed applet you can follow the same directions
+as above and then you must sign <b>all</b> the jar files (in the <i>lib</i>
+directory and the <i>lbe.jar </i>file) with an object signing certificate.
+Please see the <a href="http://www.javasoft.com/products/plugin/1.3/docs/index.docs.html">Java
+Plug-in documentation</a> for details for this step.
+<p><a NAME="What parameters can I pass to the"></a><b>What parameters I
+can pass to the applet?</b>
+<p>There is a number of parameters that can be passed to the applet:
+<ul>
+<li>
+<b>width</b></li>
+
+<ul>
+<li>
+It sets the width of the Browser window. Defaults to 600 if not set. Example:</li>
+
+<pre>&lt;PARAM NAME=width VALUE=600></pre>
+</ul>
+
+<li>
+<b>height</b></li>
+
+<ul>
+<li>
+It sets the height of the Browser window. Defaults to 370 if not set. Example:</li>
+
+<pre>&lt;PARAM NAME=height VALUE=400></pre>
+</ul>
+
+<li>
+<b>base</b></li>
+
+<ul>
+<li>
+It sets the base location of the Browser where the templates, the help
+files, and the session files will be resolved from. Must be in form of
+URL. If the base location is not set, the location where the browser was
+loaded from will be used. The applet must have access to the specified
+base url. Example:</li>
+
+<pre>&lt;PARAM NAME=BASE VALUE="http://myserver.com/ldapbrowser"></pre>
+</ul>
+
+<li>
+<b>config</b></li>
+
+<ul>
+<li>
+<b><i>2.8.2:</i></b> Specifies the location of the LBE configuration file
+(lbe.properties) to load. By default, the Browser will try to load the
+configuration file from the '<i>.be</i>' directory under user's home directory.
+See <a href="#What is the lbe.properties">What is lbe.properties file?</a>
+question for details. Example:</li>
+
+<pre>&lt;PARAM NAME=config VALUE="lbe.properties"></pre>
+
+<li>
+<b><i>2.8.1</i></b>: Specifies the name of the configuration file to load.
+It is resolved from the <b>base</b> location. If not set, the applet will
+try to load the default configuration file called <i>browser.cfg</i>. Example:</li>
+
+<pre>&lt;PARAM NAME=config VALUE="nds.cfg"></pre>
+</ul>
+
+<li>
+<b>dir</b></li>
+
+<ul>
+<li>
+Specifies the local directory where the session files will be loaded from.
+The applet must have access to the specified directory. Example:</li>
+
+<pre>&lt;PARAM NAME=dir VALUE="C:\ldapbrowser"></pre>
+</ul>
+
+<li>
+<b>window</b></li>
+
+<ul>
+<li>
+Specifies if the Browser should run in a panel within the web browser or
+in an external window. By default, the Browser runs within the web browser
+window. If set to '<i>frame</i>' the Browser will run in an external window.
+If set to '<i>both</i>', the user will be able to switch the Browser dynamically
+between the web browser and an external window. Example:</li>
+
+<pre>&lt;PARAM NAME=window VALUE="both"></pre>
+</ul>
+
+<li>
+<b>debug</b></li>
+
+<ul>
+<li>
+It enables the debug level of the Browser. This parameter takes exactly
+the same values as described in this <a href="#How do I enable debugging for the LDAP">question</a>.
+Example:</li>
+
+<pre>&lt;PARAM NAME=debug VALUE="ldap:ssl"></pre>
+</ul>
+</ul>
+<a NAME="How do I debug the Browser as an"></a><b>How do I debug the Browser
+as an applet?</b>
+<p>To debug the Browser as an applet first make sure to enable the Java
+Plug-in Console. It can be enabled through the Java Plug-in Control Panel.
+Once the console is enabled, you will see the console window appear when
+Java Plug-in is used in the browser. In addition you can also enable the
+Browser applet debugging by setting the debug parameter as described in
+the <a href="#What parameters can I pass to the">above</a> question.
+<p>
+<hr ALIGN=LEFT WIDTH="100%">
+<br><b><font size=+1>Attribute Viewers/Editor Questions</font></b>
+<p><a NAME="What are attribute"></a><b>What are attribute viewers/editors?</b>
+<p>The attribute viewer/editor is a means of displaying and/or editing
+the contents of an attribute. Each attribute can contain a different value
+that needs to be represented differently. For example, a 'jpegphoto' attribute
+contains an image and an 'audio' attribute contains a sound and a 'name'
+attribute contains some string. These three need to have different visual
+representations. In the case of the image, the actual image might be displayed.
+In the case of the sound, the sound might be played automatically or when
+a play button is pressed. In the case of the name attribute a textbox with
+the string might be displayed. The LDAP Browser/Editor allows users to
+customize the viewers/editors for any attribute.
+<p><a NAME="What attribute viewers/editors are distributed"></a><b>What
+attribute viewers/editors are distributed with the Browser?</b>
+<p>The following editors are currently distributed with the browser:
+<ul>
+<li>
+<b>ImageEditor</b></li>
+
+<ul>
+<li>
+allows the display of image files such as <b>JPEG</b> and <b>GIF</b>.</li>
+</ul>
+
+<li>
+<b>CertificateEditor2</b></li>
+
+<ul>
+<li>
+allows the display of <b>X.509</b> certificates.</li>
+</ul>
+
+<li>
+<b>Password Editor</b></li>
+
+<ul>
+<li>
+allows for generating and verifying <b>MD5</b>, <b>SHA</b>, and <b>Unix
+Crypt</b> passwords.</li>
+</ul>
+
+<li>
+<b>ControlViewer</b></li>
+
+<ul>
+<li>
+allows for displaying friendly names of the LDAP controls contained in
+the Root DSE.</li>
+</ul>
+
+<li>
+<b>ExtBinaryEditor</b> (experimental in 2.8.1)</li>
+
+<ul>
+<li>
+allows for executing external applications to view the contents of an attribute.</li>
+</ul>
+
+<li>
+<b>ExtStringEditor</b> (experimental in 2.8.1)</li>
+
+<ul>
+<li>
+allows for executing external applications to view the contents of an attribute.</li>
+</ul>
+
+<li>
+<b>SoundEditor</b></li>
+
+<ul>
+<li>
+allows the playing of sound files such as <b>AIFF</b>, <b>AU</b>, <b>WAV</b>,
+<b>TYPE
+0 MIDI</b>, <b>TYPE 1 MIDI</b> and <b>RMF</b>.</li>
+</ul>
+</ul>
+<a NAME="How do I set default algorithm for the"></a><b>How do I set default
+algorithm for the Password Editor?</b>
+<p>By default the Password Editor will generate a new password using the
+same algorithm as the algorithm used in the existing password. To force
+the editor to always generate a specific type of password edit the <i>attributes.config</i>
+file and add following arguments to the Password Editor line:
+<pre>-algorithm [algorithmType] -force</pre>
+where <i>algorithmType</i> is one of following: Crypt, MD5 or SHA. For
+example, an entry for userpassword in my config file looks like following:
+<pre>userpassword=binary,lbe.editor.PasswordEditor -algorithm crypt -force</pre>
+Also, make sure that your server is configured to accept the algorithm
+specified.
+<p><a NAME="What is the ExtBinaryEditor and how can I use"></a><b>What
+is the ExtBinaryEditor and how can I use it?</b>
+<p>The <i>ExtBinaryEditor</i> is a generic editor for binary attributes
+that allows for launching external applications to view the contents of
+the attribute. You can configure the <i>ExtBinaryEditor</i> to launch an
+external application to view the certificate by adding the following arguments
+to the <i>ExtBinaryEditor</i> line in the <i>attributes.config</i> file:
+<pre>-ext -extcmd "command {0}"</pre>
+where <i>command </i>is an application to execute and <i>{0} </i>is an
+argument to the application. The argument is a filename that contains the
+data of the selected attribute.
+<br>Example:
+<pre>certificateRevocationList=binary,lbe.editor.ExtBinaryEditor -ext -extcmd "rundll32.exe cryptext.dll,CryptExtOpenCRL {0}"</pre>
+The above example will allow to pass the data of the <i>certificateRevocationList</i>
+attribute to Windows default CRL viewer. (This assumes all the necessary
+software is installed)
+<p><a NAME="What is the ExtStringViewer and how can I use"></a><b>What
+is the ExtStringViewer and how can I use it?</b>
+<p>The <i>ExtStringViewer</i> is a generic viewer for the regular attributes
+that allows for passing the attribute value to an external application.
+For example, it could be used to pass an email address to mail application.
+It is used and configured the same as the <i>ExtBinaryEditor</i> where
+the only difference is that the <i>{0}</i> argument is the actual value
+of the selected attribute. Please see the <a href="#What is the ExtBinaryEditor and how can I use">question</a>
+about the <i>ExtBinaryEditor</i> for details.
+<br>The following example will pass the email address stored in the mail
+attribute to Outlook Express on Windows. (This assumes all the necessary
+software is installed)
+<pre>mail=string,lbe.editor.ExtStringViewer -ext -extcmd "C:\\Program Files\\Outlook Express\\msimn.exe /mailurl:mailto:{0}"</pre>
+<a NAME="How can I configure the CertificateEditor2 to"></a><b>How can
+I configure the CertificateEditor2 to launch an external application to
+view the certificate?</b>
+<p>You can configure the <i>CertificateEditor2</i> to launch an external
+application to view the certificate in the same way as you configure the<i>
+ExtBinaryEditor</i>. Please see the <a href="#What is the ExtBinaryEditor and how can I use">question</a>
+about the <i>ExtBinaryEditor</i> for details.
+<br>The following example will pass the certificate to Windows certificate
+wizard: (This assumes all the necessary software is installed)
+<pre>usercertificate=binary,lbe.editor.CertificateEditor2 -ext -extcmd "rundll32.exe cryptext.dll,CryptExtOpenCER {0}"</pre>
+<a NAME="How do I write a custom attribute"></a><b>How do I write a custom
+attribute viewer/editor?</b>
+<p>Two things:
+<blockquote>1. Extend some JComponent (from SwingSet) e.g. JPanel, JTextField,
+JTable.
+<br>2. Implement the AttributeEditor interface.
+<p>or
+<p>1. Extend BinaryEditor (for binary values) or DefaultEditor (for string
+values) or any other built-in editor.
+<br>2. Override needed methods.</blockquote>
+
+<p><br>
+<hr ALIGN=LEFT WIDTH="100%">
+<br><b><font size=+1>SSL Questions</font></b>
+<p><a NAME="How do I enable the SSL support in the"></a><b>How do I enable
+the SSL support in the Browser?</b>
+<p>The Browser is closely integrated with the JSSE library from Sun. It
+is a free pure Java SSL library.
+<br>To enable the SSL support in the Browser do the following:
+<ol>
+<li>
+Download JSSE from: <a href="http://java.sun.com/products/jsse/">http://java.sun.com/products/jsse.</a></li>
+
+<li>
+Install the JSSE package:</li>
+
+<ul>
+<li>
+either by following the <a href="http://java.sun.com/products/jsse/install.html">general
+installation instructions</a>, or by</li>
+
+<li>
+copying the <i>jnet.jar, jsse.jar, jcert.jar</i> files from the <i>lib/</i>
+directory of the JSSE package to the<i> lib/ </i>directory of the Browser.</li>
+</ul>
+</ol>
+And that's all. To connect using SSL just make sure to select the SSL box
+in the connect window and specify the right port number.
+<p><a NAME="Why does initial SSL connection take a while to"></a><b>Why
+does initial SSL connection take a while to establish?</b>
+<p>The very first time a secure connection is established Java must create
+a secure seed required for the SSL connection. This is a very computationally
+expensive process and may take up to a few seconds on certain platforms.
+However, the seed only needs to be computed once per session.
+<p><a NAME="How do I turn on debugging for the SSL"></a><b>How do I turn
+on debugging for the SSL connection?</b>
+<p>To enable debug mode for secure connections use
+<pre>-Djavax.net.debug=all</pre>
+option on the command line to the Java interpreter. For example:
+<pre>java -Djavax.net.debug=all -classpath .....&nbsp; lbe.ui.BrowserApp</pre>
+For details on how to modify the 'be' scripts to enable this property see
+the&nbsp; <a href="#How do I modify the 'lbe' scripts to add the">question</a>
+about this.
+<p><a NAME="How do I specify client certificates for the SSL"></a><b>How
+do I specify client certificates for the SSL connection?</b>
+<p>To specify the client certificates you must create a Java keystore (using
+keytool) with your certificates and then add the path to the keystore and
+the password of the keystore to the session file.
+<br>For example:
+<pre>&nbsp;&nbsp; keystore&nbsp;&nbsp; = .keystore
+&nbsp;&nbsp; passphrase = abcdef</pre>
+Please note, that these settings will only work with the default secure
+socket factory that is built-in with the browser. If different socket factory
+is used, it might have another way of specifying these options.
+<p>If the <i>passphrase</i> is not specified in the session file, the Browser
+will prompt the user for it as needed.
+<p><b>Note</b>: The passphrase of the keystore must match the password
+of the private key (keypass)
+<p><a NAME="How do I fix 'CA certificate not found' error?"></a><b>How
+do I fix the 'CA certificate not found' error?</b>
+<p>This error occurs during SSL handshaking when the server does not send
+the CA certificate along with its certificates and the client cannot verify
+the server certificates because it also does not have the CA certificate.
+To fix this problem, you must obtain the server CA certificate and add
+it manually to the Browser's CA certificate store.
+<br>By default, the Browser maintains all the CA certificates in the <i>lbecacerts</i>
+file. The default password for the file is '<i>changeit</i>'
+<br>Once you obtain the server CA certificate, you can add it to the <i>lbecacerts</i>
+file by using the <i>keytool</i> program, e.g.:
+<pre>keytool -import -alias myldap -file CAcert.cer -keystore lbecacerts -storepass changeit</pre>
+See the Java documentation for more information about the keytool program.
+<p><a NAME="Why does SSL connection sometimes hang the"></a><b>Why does
+an SSL connection sometimes hang the browser</b>?
+<p>Most likely this occurs when the ldap port number specified in the connection
+windows was not a SSL port. If non-secure socket is used to connect to
+a server's SSL socket, then the application using the non-secure socket
+will hang. This is a characteristic of the SSL protocol.
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (WinNT; U) [Netscape]">
+   <title>LDAP Browser/Editor 2.8.2: Release Notes</title>
+</head>
+<body>
+
+<center>
+<h2>
+LDAP Browser/Editor 2.8.2 Release Notes</h2></center>
+
+<center>April 25th, 2001</center>
+
+<h3>
+What's New in Version 2.8.2</h3>
+The LDAP Browser/Editor 2.8.2 is a maintenance release. It contains a number
+of bug fixes and various improvements described below. It also contains
+a couple of new features. For a complete list of changes see the <a href="CHANGES.TXT">changes.txt</a>
+file included with the distribution.
+<p><b>New Features/Improvements:</b>
+<ol>
+<li>
+Multiple windows: Multiple windows/connections can be opened at the same
+time without starting a separate JVM for each connection.</li>
+
+<li>
+Improved UTF8 support for various functions and operations.</li>
+
+<li>
+For authenticated connections, the password does not need to be stored
+in the configuration file anymore. The Browser will prompt the user for
+the password when needed.</li>
+
+<li>
+Improved configuration. Generic and static Browser settings are now pulled
+and stored in a separate configuration file. See <a href="faq.html#What is the lbe.properties">What
+is lbe.properties file?</a> question for details.</li>
+
+<li>
+PKCS12 support: The CA certificates, and client certificates can now be
+loaded from the PKCS12 files. The files must have <i>.p12</i> extension
+to be loaded in the PKCS12 format. This functionality relies on the JSSE
+and its support for PKCS12 standard.</li>
+
+<li>
+Partial internationalization: This is an initial effort to internationalize
+the entire code and translate it into a couple of languages. Right now
+only a small portion of the code is internationalized and only Polish translation
+is provided.</li>
+</ol>
+<b>Bug Fixes:</b>
+<ol>
+<li>
+Backslash characters ('\') were not properly escaped in the session files.</li>
+
+<li>
+UTF8 encoded distinguished names were incorrectly encoded/decoded in ldap
+urls.</li>
+</ol>
+<b>Current limitations/bugs:</b>
+<ul>
+<li>
+LDIF changetypes are not supported.</li>
+
+<li>
+No schema integration.</li>
+
+<li>
+No VLV/Paged results support.</li>
+
+<li>
+Fetch DN only works with ldap v3 servers.</li>
+
+<li>
+Various window refresh problems - due to bugs in JVM.</li>
+</ul>
+<b>Other Notes:</b>
+<p>If running the Browser with JVM 1.3 you might encounter some problems
+with the JNDI library. JVM 1.3 includes an older version of the JNDI library
+then the version that is distributed with the Browser. 1.3 will load the
+older version instead of the Browser version. To force the Browser to load
+its version of the JNDI library using the '<i>lbe</i>' script pass '<i>fix13</i>'
+as the <b>first</b> parameter to the script. Examples: on <b>Windows </b>type:
+<i>lbe.bat
+fix13 </i>on<i> </i><b>Unix/Linux </b>type:<i> lbe.sh fix13.</i>
+<p><b>Mac OS X:</b>
+<p>The Browser was successfully tested on Mac OS X.
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,116 @@
+#################################
+# LDAP Browser v2.8 config file #
+#################################
+
+# host of the ldap server
+host=ldap.itd.umich.edu
+
+# port of the ldap server
+port=389
+
+# ssl port of the ldap server (if any)
+sslport=636
+
+# base dn of the ldap server
+basedn=o=University of Michigan, c=us
+
+# sets the ldap version number [2|3]
+version=2
+
+# dn of the directory manager
+managerdn=cn=Directory Manager
+
+# password of the directory manager
+password=
+
+# bind with the manager credentials [yes|no]
+managerlogin=no
+
+# specifies if the connection should be
+# made automatically [yes|no]
+autoconnect=no
+
+# specifies the type of the indicator of the leaf node
+# supports [int | boolean ]
+leafindicatortype=int
+
+# specifies the name of the indicator of the leaf node
+# valid attribute - usually operational attribute
+# note: works only with LdapV3 servers!
+leafindicator=numsubordinates
+
+# sets the maximum number of results
+# 0 or not specified - unlimited
+limit=0
+
+# sets the size of a batch. 
+# 0 or not defiened - all entries returned at once.
+batchsize=0
+
+# sets the timeout of the ldap operations in msec
+# 0 or not specified - unlimited timeout
+timeout=0
+
+# manage referrals [yes|no]
+# if no referrals are returned at normal entries
+managereferrals=no
+
+# set this to yes if your ldap server
+# supports moving tree in DIT
+supportsmovetree=no
+
+# sets the 'derefrence alias' option
+# [never|alwyas|search|find]
+derefaliases=never
+
+# defines if an entry should either keep or delete
+# the old rdn when renaming the entry
+deleteolddn=yes
+
+# defines the sorting order of the DIT tree
+# if not specifed, no sorting is performed
+# otherwise supports [ascending|descending]
+sorttree=ascending
+
+# used for fixing the location of the windows
+# on the screen. related to bugs in java
+# fixlocation = 10
+
+# sets the buffer size of the error window
+# (in bytes) default=2048
+# logsize=2048
+
+# sets if the error window should popup on 
+# error. [yes|no] default: no
+# popuperrorwindow=no
+
+# defines the ldap filter used to build 
+# the tree structure. default: (objectclass=*)
+# ldap.list.filter=(objectclass=*)
+
+# defines the list of attributes to retreive
+# on each read. useful for specifying the
+# operational attributes (space separated)
+# e.g. ldap.attributes.list=* +
+
+
+###################
+# SECURITY settings
+###################
+
+# sets the security protocol
+# eg. [ssl|gssapi?]
+# security.protocol=ssl
+
+# sets the authentication 
+# eg. [simple|external]
+# security.authentication=simple
+
+# sets the socket factory
+# eg. javax.net.ssl.SSLSocketFactory
+# ldapsocketfactory=javax.net.ssl.SSLSocketFactory
+
+
+
+
+

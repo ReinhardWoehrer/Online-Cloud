@@ -1,0 +1,33 @@
+# name : organizationalPerson
+#
+# objectClass : top
+# objectClass : organizationalPerson
+#
+
+PREFIX: cn
+
+REQUIRED ATTRIBUTES
+
+OPTIONAL ATTRIBUTES
+description
+destinationIndicator
+facsimileTelephoneNumber
+internationaliSDNNumber
+l
+ou
+physicalDeliveryOfficeName
+postOfficeBox
+postalAddress
+postalCode
+preferredDeliveryMethod
+registeredAddress
+seeAlso
+st
+streetAddress
+telephoneNumber
+teletexTerminalIdentifier
+telexNumber
+title
+userPassword
+x121Address
+

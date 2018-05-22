@@ -1,0 +1,16 @@
+# name : person
+#
+# objectClass : top
+# objectClass : person
+#
+
+PREFIX: cn
+
+REQUIRED ATTRIBUTES
+
+OPTIONAL ATTRIBUTES
+sn
+description
+seeAlso
+telephoneNumber
+userPassword
