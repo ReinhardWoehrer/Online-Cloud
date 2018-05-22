@@ -1,10 +1,3 @@
-<!--<form method="post">
-	Username <br>
-	<input name="username" type="text" class="inputs"> <br>
-	Passwort <br>
-	<input name="password" type="password" class="inputs"> <br>
-	<input type="submit" value="Login" class="submit" name="submit">
-</form>-->
 <?php
 	if(!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on")
 	{
@@ -50,19 +43,7 @@
 		  $dn = "ou=People,".$searchbase;  // wo wird gesucht?
 		  $ldapbind = @ldap_bind($ds,"uid=".$loginname.",".$dn,$loginpw);
 		  if ($ldapbind) {
-			  // LDAP search (Suche am gebundenen Knoten)
-			  /*$filter="(uid=$loginname)";
-			  $justthese = array("ou", "sn", "givenname", "mail"); // nur nach diesen Einträgen suchen
-			  $sr=ldap_search($ds, $dn, $filter, $justthese); // Suche wird durchgeführt
-			  $info = ldap_get_entries($ds, $sr);             // gefundene Einträge werden ausgelesen
-			  echo $info["count"]." entries returned\n<br>";
-			  $ii=0;
-			  for ($i=0; $ii<$info[$i]["count"]; $ii++)
-			  {
-				$data = $info[$i][$ii];
-				echo $data.":  ".$info[$i][$data][0]."\n<br>";
-			  }*/
-				echo "<script>window.location = 'Main_Page.php'</script>";
+			echo "<script>window.location = 'Main_Page.php'</script>";
 		  }
 		  ldap_close($ds);
 	   if(!$ldapbind)
