@@ -20,10 +20,10 @@
 		<div id="header">
 			<?php include "content/header.php"; ?>
 		</div>
-		<div class="container">
+		<div class="container" id="main">
 		<div class="row">
 			<div id="registration" class="col-md-6 col-sm-12">
-				<?php include "content/login.php"; ?>
+				<?php include "content/registration.php"; ?>
 			</div>
 			
 			<div id="login_news" class="col-md-6 col-sm-12">
