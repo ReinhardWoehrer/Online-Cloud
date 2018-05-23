@@ -39,31 +39,34 @@
 	height:400px;
 }
 #content{
-	background-color:blue;
-	/*height:700px;*/
 }
 #setAlg{
-	background-color:yellow;
+	border:1px solid black;
 	height:700px;
+	margin-bottom:1em;
 }
 #setDet{
-	background-color:lime;
+	border:1px solid black;
 	height:700px;
 }
 #SearchUpload{
-	background-color:yellow;
+	border:1px solid black;
 	height:50px;
 	margin:0 -15px;
 }
 #Ordner{
-	background-color: brown;
+	border:1px solid black;
+	margin-top:0.5em;
+	margin-bottom:1em;
 	height:650px;
 }
 #Pfad{
-	background-color:lime;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	border:1px solid black;
 	height:50px;
 }
 #Dateien{
-	background-color:lightblue;
+	border:1px solid black;
 	height:600px;
 }
