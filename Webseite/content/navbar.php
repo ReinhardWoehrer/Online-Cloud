@@ -10,7 +10,7 @@
 			</div>
 			<div id="navlist" class="collapse navbar-collapse">
 				<ul  class="nav navbar-nav navbar-right" >
-					<li><a href="Main_Page.php">Home</a></li> <!-- if ?section=home isnt there homepage wont load correctly -->
+					<li><a href="Main_Page.php?section=home">Home</a></li> <!-- if ?section=home isnt there homepage wont load correctly -->
 					<li><a href="Main_Page.php?section=settings">Settings</a></li>
 					<li><a href="Main_Page.php?section=news">News</a></li>
 					

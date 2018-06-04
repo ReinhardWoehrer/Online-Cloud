@@ -1,3 +1,11 @@
+<?PHP
+session_start();
+
+ /*if(!isset($_SESSION["Username"])){
+ 	header ("LOCATION: First_page.php");
+ }*/
+
+?>
 <!DOCTYPE html>
 <html>
 

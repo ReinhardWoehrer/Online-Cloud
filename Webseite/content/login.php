@@ -43,7 +43,10 @@
 		  $dn = "ou=People,".$searchbase;  // wo wird gesucht?
 		  $ldapbind = @ldap_bind($ds,"uid=".$loginname.",".$dn,$loginpw);
 		  if ($ldapbind) {
-			echo "<script>window.location = 'Main_Page.php'</script>";
+		  	$_SESSION["Username"]=$loginname;
+		  	header("LOCATION: Main_Page.php");
+			//echo "<script>window.location = 'Main_Page.php'</script>";#
+			//echo $_SESSION["Username"];
 		  }
 		  ldap_close($ds);
 	   if(!$ldapbind)
